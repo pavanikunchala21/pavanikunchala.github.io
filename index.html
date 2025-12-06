@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pavani Kunchala — Java Backend Developer</title>
-  <meta name="description" content="Pavani Kunchala — Java Backend Developer. Spring Boot, REST APIs, MySQL, backend system design, and real-world case studies.">
+  <meta name="description" content="Pavani Kunchala — Java Backend Developer. Spring Boot, REST APIs, SQL, backend system design, and real-world case studies.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
@@ -17,9 +17,9 @@
       --accent-2:#a66aff;
       --glass: rgba(255,255,255,0.03);
       --highlight: rgba(0,230,217,0.12);
-      --success: #3be08a;
-      --danger: #ff6b6b;
       --max-width: 1180px;
+      --btn-white-bg: #ffffff;
+      --btn-white-foreground: #0b0b0b;
     }
 
     *{box-sizing:border-box}
@@ -27,7 +27,7 @@
     a{color:var(--accent-1);text-decoration:none}
     .container{max-width:var(--max-width);margin:0 auto;padding:28px}
 
-    /* --- NAV --- */
+    /* NAV */
     header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(2,8,14,0.7), rgba(2,8,14,0.4));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
     .brand{font-weight:800;font-size:18px;letter-spacing:0.6px}
@@ -35,7 +35,7 @@
     nav a{font-weight:600;color:rgba(255,255,255,0.87)}
     .nav-cta{padding:8px 12px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:8px;color:#021015;font-weight:700}
 
-    /* --- HERO --- */
+    /* HERO */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:56px 0}
     .intro h4{color:var(--muted);margin:0 0 8px}
     .intro h1{font-size:44px;margin:0 0 6px;line-height:1}
@@ -47,7 +47,7 @@
     .cta-row{display:flex;gap:12px;align-items:center}
     .cta{padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#021015;font-weight:700}
 
-    /* neon avatar */
+    /* neon avatar (image has no filters applied) */
     .avatar-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .neon-ring{
       width:360px;height:360px;border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -65,7 +65,7 @@
       width:320px;height:320px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;
       border:3px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     }
-    .avatar-inner img{width:92%;height:92%;object-fit:cover;border-radius:50%;display:block}
+    .avatar-inner img{width:92%;height:92%;object-fit:cover;border-radius:50%;display:block; /* no filters or color overlays */ }
 
     /* sections */
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
@@ -87,9 +87,22 @@
     .project-card h4{margin:0 0 8px}
     .project-meta{color:var(--muted);font-size:14px;margin-bottom:12px}
     .project-buttons{display:flex;gap:10px;flex-wrap:wrap}
-    .btn-small{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:700}
 
-    /* case-study modal like area */
+    /* Case Study button: white box with black text */
+    .btn-case{
+      background: var(--btn-white-bg);
+      color: var(--btn-white-foreground);
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid rgba(0,0,0,0.06);
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(11,11,11,0.08);
+    }
+
+    .btn-small{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
+
+    /* case-study area */
     .case{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));border-left:4px solid rgba(0,230,217,0.12)}
     .case h5{margin:6px 0 6px;font-size:15px}
     .case p{color:var(--muted);margin:6px 0 10px;font-size:14px}
@@ -115,10 +128,8 @@
       .intro h1{font-size:28px}
     }
 
-    /* small helpers */
     .hidden{display:none}
     .center{display:flex;align-items:center;justify-content:center}
-    .mb-8{margin-bottom:8px}
   </style>
 </head>
 <body>
@@ -135,6 +146,7 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a class="nav-cta" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="nav-cta" href="https://www.linkedin.com/in/Pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </nav>
     </div>
@@ -155,7 +167,7 @@
         <div class="socials" aria-hidden="false">
           <a class="sbtn" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a>
           <a class="sbtn" href="mailto:pavanikunchala143@gmail.com">Email</a>
-          <a class="sbtn" href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a class="sbtn" href="https://www.linkedin.com/in/Pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
         <div class="cta-row">
@@ -167,7 +179,7 @@
       <div class="avatar-wrap" aria-hidden="false">
         <div class="neon-ring" role="img" aria-label="Profile picture">
           <div class="neon-inner avatar-inner">
-            <!-- uses image.jpeg that you uploaded to repo root -->
+            <!-- uses image.jpeg that you uploaded to repo root; image displayed clean with no color filter -->
             <img src="image.jpeg" alt="Pavani Kunchala">
           </div>
         </div>
@@ -195,10 +207,10 @@
         <div>
           <div class="card">
             <div style="font-weight:800;margin-bottom:8px">Quick Facts</div>
-            <div class="small">Junior Java Backend Developer • Spring Boot • REST API Design • MySQL • Git</div>
+            <div class="small">Junior Java Backend Developer • Spring Boot • REST API Design • SQL • Git</div>
             <div style="margin-top:12px" class="small">
               <strong>Highlights</strong><br>
-              - Clean, testable code • API design • Database modeling • Docker deployments
+              - Clean, testable code • API design • Database modeling • Deployments
             </div>
           </div>
         </div>
@@ -213,19 +225,17 @@
         <div>
           <div style="margin-bottom:12px;font-weight:800">Technical Skills</div>
           <div class="skills-grid" role="list">
-            <!-- emphasize core skills -->
-            <div class="skill-badge skill-strong">Core Java</div>
+            <!-- updated technical skills per your request -->
+            <div class="skill-badge skill-strong">C</div>
+            <div class="skill-badge skill-strong">Java</div>
             <div class="skill-badge skill-strong">Spring Boot</div>
             <div class="skill-badge skill-strong">REST APIs</div>
-            <div class="skill-badge">Spring Data JPA</div>
-            <div class="skill-badge">MySQL</div>
-            <div class="skill-badge">NoSQL (MongoDB)</div>
-            <div class="skill-badge">Docker</div>
-            <div class="skill-badge">Git & GitHub</div>
-            <div class="skill-badge">Unit testing (JUnit)</div>
-            <div class="skill-badge">Basic Networking</div>
-            <div class="skill-badge">HTML & CSS (basic)</div>
-            <div class="skill-badge">MS Excel / Word</div>
+            <div class="skill-badge">SQL</div>
+            <div class="skill-badge">HTML</div>
+            <div class="skill-badge">CSS</div>
+            <div class="skill-badge">MS Excel</div>
+            <div class="skill-badge">MS Word</div>
+            <div class="skill-badge">Basic Networking Concepts</div>
           </div>
         </div>
 
@@ -257,7 +267,7 @@
           <h4>E-Commerce Backend System</h4>
           <div class="project-meta">Problem solved: Reliable catalog, cart & order microservices for a medium-size online shop</div>
           <div class="project-buttons mb-8">
-            <button class="btn-small" data-toggle="case" data-target="case-ec">View case study</button>
+            <button class="btn-case" data-toggle="case" data-target="case-ec">Case study</button>
             <a class="btn-small" href="https://github.com/pavanikunchala21/ecommerce-backend" target="_blank" rel="noopener">Repo</a>
           </div>
 
@@ -272,7 +282,7 @@
               <strong>Key highlights / Docs</strong>
               <ul class="small">
                 <li>Design artifacts: ER diagram, service boundaries, API contract (OpenAPI)</li>
-                <li>Tech: Java, Spring Boot, Spring Data JPA, MySQL, Docker, JWT, JUnit, Testcontainers</li>
+                <li>Tech: C, Java, Spring Boot, REST APIs, SQL, Docker (optional for deploy)</li>
                 <li>Production-ready features: Optimistic locking, pagination, filtering, health checks</li>
               </ul>
             </div>
@@ -284,7 +294,7 @@
           <h4>Real-Time Chart Application</h4>
           <div class="project-meta">Problem solved: Live metric streaming for dashboards and alerts</div>
           <div class="project-buttons mb-8">
-            <button class="btn-small" data-toggle="case" data-target="case-rt">View case study</button>
+            <button class="btn-case" data-toggle="case" data-target="case-rt">Case study</button>
             <a class="btn-small" href="https://github.com/pavanikunchala21/realtime-chart-app" target="_blank" rel="noopener">Repo</a>
           </div>
 
@@ -293,12 +303,12 @@
             <p><strong>Situation:</strong> A product manager needed a live view of system metrics (requests/sec, errors, latency) to make operational decisions.</p>
             <p><strong>Task:</strong> Build backend endpoints and a streaming interface that feeds the frontend charts in near real-time with minimal latency.</p>
             <p><strong>Action:</strong> Implemented a Spring Boot service exposing WebSocket endpoints and REST fallback. Backend collected metrics from simulated event producers and streamed aggregated values over WebSockets; added batching and compression to reduce bandwidth. Authenticated WebSocket sessions and provided reconnect logic on the client side. Added an API to query historical windows for charts.</p>
-            <p><strong>Result:</strong> Frontend charts displayed updates in <200ms after metric ingestion on average. The streaming approach reduced REST polling overhead by 92% and allowed quicker troubleshooting.</p>
+            <p><strong>Result:</strong> Frontend charts displayed updates in &lt;200ms after metric ingestion on average. The streaming approach reduced REST polling overhead by 92% and allowed quicker troubleshooting.</p>
 
             <div style="margin-top:10px">
               <strong>Key highlights / Docs</strong>
               <ul class="small">
-                <li>Tech: Spring Boot, WebSocket, REST, Docker, small React demo UI</li>
+                <li>Tech: Java, Spring Boot, WebSocket, REST, SQL</li>
                 <li>Features: Aggregation pipeline, authentication, reconnect logic, historical queries</li>
               </ul>
             </div>
@@ -310,7 +320,7 @@
           <h4>Customer Support Ticket Analysis Dashboard</h4>
           <div class="project-meta">Problem solved: Automate insights from support tickets for trend detection and SLA monitoring</div>
           <div class="project-buttons mb-8">
-            <button class="btn-small" data-toggle="case" data-target="case-ticket">View case study</button>
+            <button class="btn-case" data-toggle="case" data-target="case-ticket">Case study</button>
             <a class="btn-small" href="https://github.com/pavanikunchala21/support-ticket-analytics" target="_blank" rel="noopener">Repo</a>
           </div>
 
@@ -324,7 +334,7 @@
             <div style="margin-top:10px">
               <strong>Key highlights / Docs</strong>
               <ul class="small">
-                <li>Tech: Spring Boot (ingestion + APIs), Python script for preprocessing (optional), MySQL/Analytics store, simple sentiment module</li>
+                <li>Tech: Java, Spring Boot, REST APIs, SQL</li>
                 <li>Features: ETL pipeline, scheduled summarization, alerting, REST APIs for visualization</li>
               </ul>
             </div>
@@ -336,7 +346,7 @@
           <h4>Student Management System (SQL)</h4>
           <div class="project-meta">Problem solved: Centralized records & reporting for student enrollments and grades</div>
           <div class="project-buttons mb-8">
-            <button class="btn-small" data-toggle="case" data-target="case-stu">View case study</button>
+            <button class="btn-case" data-toggle="case" data-target="case-stu">Case study</button>
             <a class="btn-small" href="https://github.com/pavanikunchala21/student-management-sql" target="_blank" rel="noopener">Repo</a>
           </div>
 
@@ -350,7 +360,7 @@
             <div style="margin-top:10px">
               <strong>Key highlights / Docs</strong>
               <ul class="small">
-                <li>Tech: MySQL schemas, stored procedures, Spring Boot APIs, CSV export, role-based access</li>
+                <li>Tech: SQL schemas, stored procedures, Spring Boot APIs</li>
                 <li>Features: Audit logs, reporting, enrollment workflows, sample deploy scripts</li>
               </ul>
             </div>
@@ -372,7 +382,7 @@
 
           <div style="margin-top:12px">
             <a class="btn-small" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">View GitHub</a>
-            <!-- Resume link: if you upload resume.pdf to repo, change href to ./resume.pdf -->
+            <a class="btn-small" href="https://www.linkedin.com/in/Pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn-small" href="#" onclick="alert('Please upload resume.pdf to your repo and update this link');return false">Download Resume</a>
           </div>
         </div>
@@ -438,7 +448,6 @@
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
       if(!name||!email||!message){ alert('Please fill all fields.'); return; }
-      // In production wire to a serverless function or email service
       alert('Thanks ' + name + '! Message captured locally.\nEmail: ' + email + '\n(Connect the form to your backend to receive messages.)');
       document.getElementById('contactForm').reset();
     }
@@ -449,11 +458,6 @@
         document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
       }
     });
-
-    // Small improvement: mark core skills visually when page loads
-    (function highlight(){
-      // nothing complex for now; keep placeholder for future dynamic highlighting
-    })();
   </script>
 </body>
 </html>
