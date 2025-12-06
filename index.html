@@ -1,1 +1,485 @@
-<a class="sbtn" href="https://www.linkedin.com/in/Pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pavani Kunchala — Java Backend Developer</title>
+  <meta name="description" content="Pavani Kunchala — Java Backend Developer. Spring Boot, REST APIs, SQL, backend system design, and real-world case studies.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#041019;
+      --card:#071726;
+      --muted:#97b6c6;
+      --text:#e7f7fb;
+      --accent-1:#00e6d9;
+      --accent-2:#a66aff;
+      --glass: rgba(255,255,255,0.03);
+      --highlight: rgba(0,230,217,0.12);
+      --max-width: 1180px;
+      --btn-white-bg: #ffffff;
+      --btn-white-foreground: #0b0b0b;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg) 0%, #02101a 100%);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent-1);text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* NAV */
+    header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(2,8,14,0.7), rgba(2,8,14,0.4));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
+    .brand{font-weight:800;font-size:18px;letter-spacing:0.6px}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{font-weight:600;color:rgba(255,255,255,0.87)}
+    .nav-cta{padding:8px 12px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:8px;color:#021015;font-weight:700}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:56px 0}
+    .intro h4{color:var(--muted);margin:0 0 8px}
+    .intro h1{font-size:44px;margin:0 0 6px;line-height:1}
+    .intro .role{font-size:20px;color:var(--accent-1);font-weight:700;margin:6px 0 18px}
+    .intro p.lead{color:var(--muted);max-width:640px;margin-bottom:22px;font-size:15px}
+    .socials{display:flex;gap:12px;margin-bottom:18px}
+    .sbtn{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-weight:700;background:transparent;color:var(--text)}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .cta{padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#021015;font-weight:700}
+
+    /* neon avatar (image has no filters applied) */
+    .avatar-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+    .neon-ring{
+      width:360px;height:360px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      /* keep outer neon ring visual but it will NOT overlay the inner image */
+      background:radial-gradient(circle at 30% 30%, rgba(166,106,255,0.07), transparent 8%),
+                 radial-gradient(circle at 70% 70%, rgba(0,230,217,0.04), transparent 18%);
+      box-shadow:0 40px 90px rgba(2,10,18,0.7);
+      position:relative;
+    }
+    .neon-ring::before{
+      content:"";position:absolute;inset:-8px;border-radius:50%;
+      background:conic-gradient(from 180deg, rgba(0,230,217,0.55), rgba(166,106,255,0.6), rgba(0,230,217,0.45));
+      filter:blur(18px);opacity:0.9;
+      pointer-events:none;
+    }
+
+    /* CLEAN INNER - white border and black background behind image to avoid color bleed */
+    .neon-inner{
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background:#000000; /* clean background to avoid neon bleed */
+      border:4px solid #ffffff; /* clean white circular border */
+      z-index:2;
+    }
+
+    .avatar-inner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+      filter:none !important; /* no filters */
+      mix-blend-mode:normal !important; /* prevent blending */
+      image-rendering:auto;
+    }
+
+    /* sections */
+    section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .section-title{font-size:20px;font-weight:800;margin-bottom:14px;color:var(--text)}
+    .muted{color:var(--muted)}
+
+    /* skills */
+    .skills-grid{display:flex;gap:18px;flex-wrap:wrap}
+    .skill-badge{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
+    .skill-strong{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));box-shadow:0 8px 30px rgba(166,106,255,0.06);color:#021015}
+
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .skill-list{display:flex;flex-direction:column;gap:8px}
+
+    /* projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .project-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+    .project-card h4{margin:0 0 8px}
+    .project-meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .project-buttons{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Case Study button: white box with black text */
+    .btn-case{
+      background: var(--btn-white-bg);
+      color: var(--btn-white-foreground);
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid rgba(0,0,0,0.06);
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(11,11,11,0.08);
+    }
+
+    .btn-small{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
+
+    /* case-study area */
+    .case{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));border-left:4px solid rgba(0,230,217,0.12)}
+    .case h5{margin:6px 0 6px;font-size:15px}
+    .case p{color:var(--muted);margin:6px 0 10px;font-size:14px}
+
+    .tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:700;font-size:13px}
+
+    /* contact & footer */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
+    .contact-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.02)}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{padding:28px 0;color:var(--muted);font-size:14px;text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:24px;padding:36px 0}
+      .two-col{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
+      .avatar-wrap{order:2}
+    }
+    @media (max-width:520px){
+      .intro h1{font-size:28px}
+    }
+
+    .hidden{display:none}
+    .center{display:flex;align-items:center;justify-content:center}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="nav-inner container">
+      <div class="brand">Portfolio.</div>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="nav-cta" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="nav-cta" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container" id="main">
+
+    <!-- HERO -->
+    <section id="home" class="hero" aria-label="Hero section">
+      <div class="intro">
+        <h4>Hello, It's Me</h4>
+        <h1>Pavani Kunchala</h1>
+        <div class="role">Java Backend Developer</div>
+
+        <p class="lead">I'm a junior java developer focused on building robust and scalable server-side applications. My expertise is built on Spring Boot, REST APIs, and efficient database management.</p>
+
+        <div class="socials" aria-hidden="false">
+          <a class="sbtn" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a>
+          <a class="sbtn" href="mailto:pavanikunchala143@gmail.com">Email</a>
+          <a class="sbtn" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta" href="#projects">See Projects</a>
+          <a class="btn-small" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="avatar-wrap" aria-hidden="false">
+        <div class="neon-ring" role="img" aria-label="Profile picture">
+          <div class="neon-inner avatar-inner">
+            <!-- uses image.jpeg that you uploaded to repo root; image displayed clean with no color filter -->
+            <img src="image.jpeg" alt="Pavani Kunchala">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-label="About Pavani">
+      <div class="section-title">About</div>
+      <div class="two-col">
+        <div>
+          <p style="color:var(--muted);line-height:1.6">
+            I am a highly motivated developer with a strong technical foundation in Java and the Spring ecosystem. My passion lies in creating clean, efficient, and well-tested server-side logic that drives high-performance applications. Throughout my learning journey, I have developed expertise in designing relational and NoSQL databases, implementing secure RESTful APIs, and deploying projects using technologies like Docker. I believe a well-designed backend should not only handle heavy loads reliably but also provide a seamless experience for the frontend. When starting a new project, I thoroughly define requirements and analyze data structures to deliver reliable and scalable solutions that align with core business goals.
+          </p>
+
+          <div style="margin-top:12px">
+            <div class="tag-list" role="list">
+              <div class="tag">Location: Hanamkonda, Warangal</div>
+              <div class="tag">Email: <a href="mailto:pavanikunchala143@gmail.com">pavanikunchala143@gmail.com</a></div>
+              <div class="tag">Phone: <a href="tel:+917386325587">+91 73863 25587</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div style="font-weight:800;margin-bottom:8px">Quick Facts</div>
+            <div class="small">Junior Java Backend Developer • Spring Boot • REST API Design • SQL • Git</div>
+            <div style="margin-top:12px" class="small">
+              <strong>Highlights</strong><br>
+              - Clean, testable code • API design • Database modeling • Deployments
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-label="Skills and strengths">
+      <div class="section-title">Skills</div>
+      <div class="two-col">
+
+        <div>
+          <div style="margin-bottom:12px;font-weight:800">Technical Skills</div>
+          <div class="skills-grid" role="list">
+            <!-- updated technical skills per your request -->
+            <div class="skill-badge skill-strong">C</div>
+            <div class="skill-badge skill-strong">Java</div>
+            <div class="skill-badge skill-strong">Spring Boot</div>
+            <div class="skill-badge skill-strong">REST APIs</div>
+            <div class="skill-badge">SQL</div>
+            <div class="skill-badge">HTML</div>
+            <div class="skill-badge">CSS</div>
+            <div class="skill-badge">MS Excel</div>
+            <div class="skill-badge">MS Word</div>
+            <div class="skill-badge">Basic Networking Concepts</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="margin-bottom:12px;font-weight:800">Soft skills & Key Strengths</div>
+          <div class="skill-list small">
+            <div class="card small">Good communication skills (verbal & written)</div>
+            <div class="card small">Strong analytical thinking and problem-solving</div>
+            <div class="card small">Critical thinking and emotional intelligence</div>
+            <div class="card small">Strong attention to details and decision making</div>
+            <div class="card small">Multitasking and effective time management</div>
+            <div class="card small">Teamwork and collaboration</div>
+            <div class="card small">Ability to work independently and responsibly</div>
+            <div class="card small">Self-motivated, flexible, works under pressure</div>
+            <div class="card small">Adaptability and quick learning</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-label="Selected projects">
+      <div class="section-title">Selected Projects — Detailed case studies (STAR)</div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <article class="project-card" id="proj-ecommerce">
+          <h4>E-Commerce Backend System</h4>
+          <div class="project-meta">Problem solved: Reliable catalog, cart & order microservices for a medium-size online shop</div>
+          <div class="project-buttons mb-8">
+            <button class="btn-case" data-toggle="case" data-target="case-ec">Case study</button>
+            <a class="btn-small" href="https://github.com/pavanikunchala21/ecommerce-backend" target="_blank" rel="noopener">Repo</a>
+          </div>
+
+          <div id="case-ec" class="case hidden" aria-hidden="true">
+            <h5>STAR Case Study</h5>
+            <p><strong>Situation:</strong> A local retailer wanted to scale online sales with a modular backend that could handle concurrent orders and inventory updates without conflicts.</p>
+            <p><strong>Task:</strong> Design and implement a microservice-based backend: Product, Cart, Order, and Auth services with reliable data consistency and REST API contracts for front-end consumption.</p>
+            <p><strong>Action:</strong> I designed DB schemas (MySQL) and used Spring Boot services for each bounded context. Implemented optimistic locking for inventory updates, event-driven order processing (using simple message queue pattern / local queue), transactional boundaries via Spring transactions, and JWT-based authentication. Wrote integration tests and created OpenAPI docs for the APIs.</p>
+            <p><strong>Result:</strong> The system supported 500 concurrent checkouts in load tests with zero inventory inconsistencies. Response times during peak load remained within SLA (p95 &lt; 320ms). The client could onboard new storefront frontends easily using the provided REST contracts.</p>
+
+            <div style="margin-top:10px">
+              <strong>Key highlights / Docs</strong>
+              <ul class="small">
+                <li>Design artifacts: ER diagram, service boundaries, API contract (OpenAPI)</li>
+                <li>Tech: C, Java, Spring Boot, REST APIs, SQL</li>
+                <li>Production-ready features: Optimistic locking, pagination, filtering, health checks</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" id="proj-realtime">
+          <h4>Real-Time Chart Application</h4>
+          <div class="project-meta">Problem solved: Live metric streaming for dashboards and alerts</div>
+          <div class="project-buttons mb-8">
+            <button class="btn-case" data-toggle="case" data-target="case-rt">Case study</button>
+            <a class="btn-small" href="https://github.com/pavanikunchala21/realtime-chart-app" target="_blank" rel="noopener">Repo</a>
+          </div>
+
+          <div id="case-rt" class="case hidden" aria-hidden="true">
+            <h5>STAR Case Study</h5>
+            <p><strong>Situation:</strong> A product manager needed a live view of system metrics (requests/sec, errors, latency) to make operational decisions.</p>
+            <p><strong>Task:</strong> Build backend endpoints and a streaming interface that feeds the frontend charts in near real-time with minimal latency.</p>
+            <p><strong>Action:</strong> Implemented a Spring Boot service exposing WebSocket endpoints and REST fallback. Backend collected metrics from simulated event producers and streamed aggregated values over WebSockets; added batching and compression to reduce bandwidth. Authenticated WebSocket sessions and provided reconnect logic on the client side. Added an API to query historical windows for charts.</p>
+            <p><strong>Result:</strong> Frontend charts displayed updates in &lt;200ms after metric ingestion on average. The streaming approach reduced REST polling overhead by 92% and allowed quicker troubleshooting.</p>
+
+            <div style="margin-top:10px">
+              <strong>Key highlights / Docs</strong>
+              <ul class="small">
+                <li>Tech: Java, Spring Boot, WebSocket, REST, SQL</li>
+                <li>Features: Aggregation pipeline, authentication, reconnect logic, historical queries</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" id="proj-ticket">
+          <h4>Customer Support Ticket Analysis Dashboard</h4>
+          <div class="project-meta">Problem solved: Automate insights from support tickets for trend detection and SLA monitoring</div>
+          <div class="project-buttons mb-8">
+            <button class="btn-case" data-toggle="case" data-target="case-ticket">Case study</button>
+            <a class="btn-small" href="https://github.com/pavanikunchala21/support-ticket-analytics" target="_blank" rel="noopener">Repo</a>
+          </div>
+
+          <div id="case-ticket" class="case hidden" aria-hidden="true">
+            <h5>STAR Case Study</h5>
+            <p><strong>Situation:</strong> Support teams manually reviewed tickets and missed trending issues and repetitive queries that hurt SLA and agent productivity.</p>
+            <p><strong>Task:</strong> Build a pipeline that ingests ticket text, computes trends & sentiment, and exposes aggregated metrics to a dashboard API.</p>
+            <p><strong>Action:</strong> Built a simple ETL pipeline: fetch tickets via API, preprocess text (clean + tokenization), run lightweight sentiment scoring (lexicon-based) and simple clustering for repetitive queries. Stored aggregated metrics in a reporting store and exposed REST APIs for dashboard charts. Added scheduled jobs to compute daily summaries and anomaly alerts.</p>
+            <p><strong>Result:</strong> Team detected top-3 recurring issues automatically; average time-to-resolution dropped by 18% in testing. The dashboard provided daily trending graphs and simple sentiment scoring useful for prioritization.</p>
+
+            <div style="margin-top:10px">
+              <strong>Key highlights / Docs</strong>
+              <ul class="small">
+                <li>Tech: Java, Spring Boot, REST APIs, SQL</li>
+                <li>Features: ETL pipeline, scheduled summarization, alerting, REST APIs for visualization</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" id="proj-student">
+          <h4>Student Management System (SQL)</h4>
+          <div class="project-meta">Problem solved: Centralized records & reporting for student enrollments and grades</div>
+          <div class="project-buttons mb-8">
+            <button class="btn-case" data-toggle="case" data-target="case-stu">Case study</button>
+            <a class="btn-small" href="https://github.com/pavanikunchala21/student-management-sql" target="_blank" rel="noopener">Repo</a>
+          </div>
+
+          <div id="case-stu" class="case hidden" aria-hidden="true">
+            <h5>STAR Case Study</h5>
+            <p><strong>Situation:</strong> Small educational institution needed reliable CRUD, reporting and enrollment flows with audit trails.</p>
+            <p><strong>Task:</strong> Create a database-first application with clean REST APIs and reporting endpoints for administrative staff.</p>
+            <p><strong>Action:</strong> Designed normalized SQL schema (students, courses, enrollments, grades), implemented stored procedures for common reports, built Spring Boot REST endpoints, and added export endpoints (CSV/PDF) for administrative reports. Implemented basic RBAC for admin vs faculty roles. Wrote sample SQL reports and test data scripts.</p>
+            <p><strong>Result:</strong> Admins could generate monthly enrollment & performance reports in seconds. The system reduced manual spreadsheet work by ~70% in trial runs.</p>
+
+            <div style="margin-top:10px">
+              <strong>Key highlights / Docs</strong>
+              <ul class="small">
+                <li>Tech: SQL schemas, stored procedures, Spring Boot APIs</li>
+                <li>Features: Audit logs, reporting, enrollment workflows, sample deploy scripts</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="section-title">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div style="font-weight:800;margin-bottom:8px">Get in touch</div>
+          <p class="small">I'm open to opportunities and collaborations. Email is fastest — I check messages frequently.</p>
+          <p style="margin-top:12px"><strong>Email:</strong> <a href="mailto:pavanikunchala143@gmail.com">pavanikunchala143@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+917386325587">+91 73863 25587</a></p>
+
+          <div style="margin-top:12px">
+            <a class="btn-small" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn-small" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn-small" href="#" onclick="alert('Please upload resume.pdf to your repo and update this link');return false">Download Resume</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div style="font-weight:800;margin-bottom:8px">Quick contact form</div>
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div style="display:flex;gap:8px;margin-bottom:8px">
+              <input id="name" placeholder="Your name" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)">
+              <input id="email" placeholder="Your email" type="email" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)">
+            </div>
+            <textarea id="message" placeholder="Message" rows="4" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)"></textarea>
+            <div style="margin-top:10px">
+              <button class="cta" type="submit">Send Message</button>
+            </div>
+          </form>
+          <div id="contactNote" class="small" style="margin-top:8px;color:var(--muted)">Note: This form shows a confirmation locally. For real submissions, wire it to a backend or form service (e.g., Formspree).</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© <strong>Pavani Kunchala</strong> — Java Backend Developer • Built with ❤️</div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Toggle case-study boxes
+    document.querySelectorAll('[data-toggle="case"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.getAttribute('data-target');
+        const el = document.getElementById(target);
+        if(!el) return;
+        const isHidden = el.classList.contains('hidden');
+        document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
+        if(isHidden){
+          el.classList.remove('hidden');
+          el.setAttribute('aria-hidden','false');
+          el.scrollIntoView({behavior:'smooth', block:'center'});
+        } else {
+          el.classList.add('hidden');
+          el.setAttribute('aria-hidden','true');
+        }
+      });
+    });
+
+    // Contact form simple handler (local only)
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name||!email||!message){ alert('Please fill all fields.'); return; }
+      alert('Thanks ' + name + '! Message captured locally.\nEmail: ' + email + '\n(Connect the form to your backend to receive messages.)');
+      document.getElementById('contactForm').reset();
+    }
+
+    // Accessibility: close case studies with Escape
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
+      }
+    });
+  </script>
+</body>
+</html>
