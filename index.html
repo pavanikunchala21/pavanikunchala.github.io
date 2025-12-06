@@ -49,7 +49,7 @@
     .cta{padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#021015;font-weight:700}
 
     /* avatar */
-    .avatar-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+    .avatar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;gap:16px}
     .neon-ring{
       width:360px;height:360px;border-radius:50%;display:flex;align-items:center;justify-content:center;
       background:radial-gradient(circle at 30% 30%, rgba(166,106,255,0.06), transparent 10%),
@@ -66,6 +66,11 @@
       background:#000000;border:4px solid #ffffff;z-index:2;
     }
     .avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;filter:none !important;mix-blend-mode:normal !important}
+
+    /* quick facts under avatar */
+    .quick-facts{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);width:320px;text-align:left}
+    .quick-facts strong{display:block;margin-bottom:8px;font-weight:800}
+    .quick-facts .small{color:var(--muted);font-size:13px;line-height:1.45}
 
     /* sections */
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
@@ -86,15 +91,16 @@
     .service-desc{color:var(--muted);font-size:14px;line-height:1.5}
     .service-cta{display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px;background:var(--btn-white-bg);color:var(--btn-white-foreground);font-weight:800}
 
-    /* SKILLS layout */
-    .skills-block{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    .skill-list-left, .skill-list-right{display:flex;flex-direction:column;gap:10px}
+    /* SKILLS layout (simple list) */
+    .skills-grid{display:flex;gap:18px;flex-wrap:wrap}
     .skill-badge{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text);display:inline-block}
     .skill-strong{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));box-shadow:0 8px 30px rgba(166,106,255,0.06);color:#021015}
 
-    .skill-panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .skill-list{display:flex;flex-direction:column;gap:8px}
 
-    /* projects grid */
+    /* projects */
     .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
     .project-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
     .project-card h4{margin:0 0 8px}
@@ -113,9 +119,13 @@
     }
     .btn-small{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
 
-    /* Extracurricular & positions */
+    /* Extra curricular and Positions side-by-side */
+    .side-by-side{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
     .list{display:flex;flex-direction:column;gap:8px}
-    .pill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+    .pill{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* hobbies */
+    .hobby{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted);line-height:1.5}
 
     /* contact & footer */
     .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
@@ -127,13 +137,12 @@
     /* responsive */
     @media (max-width:1100px){
       .services-grid{grid-template-columns:1fr}
-      .skills-block{grid-template-columns:1fr}
+      .side-by-side{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr}
     }
     @media (max-width:980px){
-      .hero{grid-template-columns:1fr;gap:24px;padding:36px 0}
       .two-col{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:1fr}
-      .avatar-wrap{order:2}
     }
     @media (max-width:520px){
       .intro h1{font-size:28px}
@@ -141,10 +150,6 @@
 
     .hidden{display:none}
     .center{display:flex;align-items:center;justify-content:center}
-    /* small svg legend style */
-    .legend { display:flex;flex-direction:column;gap:6px;margin-top:8px }
-    .legend-item { display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted) }
-    .legend-dot{width:14px;height:14px;border-radius:3px;display:inline-block}
   </style>
 </head>
 <body>
@@ -160,6 +165,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#latest-projects">Latest Projects</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a class="nav-cta" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a></li>
           <li><a class="nav-cta" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -178,7 +184,7 @@
         <h1>Pavani Kunchala</h1>
         <div class="role">Java Backend Developer</div>
 
-        <p class="lead">I'm a junior java developer focused on building robust and scalable server-side applications. My expertise is built on Spring Boot, REST APIs, and efficient database management.</p>
+        <p class="lead">I'm a junior Java developer focused on building robust and scalable server-side applications. My expertise is built on Spring Boot, REST APIs, and efficient database management.</p>
 
         <div class="socials" aria-hidden="false">
           <a class="sbtn" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a>
@@ -195,8 +201,17 @@
       <div class="avatar-wrap" aria-hidden="false">
         <div class="neon-ring" role="img" aria-label="Profile picture">
           <div class="neon-inner avatar-inner">
-            <!-- use the image you uploaded to repo root -->
+            <!-- use the image you uploaded to repo root; clean with no color filters -->
             <img src="image.jpeg" alt="Pavani Kunchala">
+          </div>
+        </div>
+
+        <div class="quick-facts" aria-hidden="false">
+          <strong>Quick Facts & Highlights</strong>
+          <div class="small">
+            • Junior Java Backend Developer<br>
+            • Spring Boot • REST API Design • SQL • Git<br>
+            • Clean, testable code • Database modeling • Deployments
           </div>
         </div>
       </div>
@@ -205,31 +220,10 @@
     <!-- ABOUT -->
     <section id="about" aria-label="About Pavani">
       <div class="section-title">About</div>
-      <div class="two-col">
-        <div>
-          <p style="color:var(--muted);line-height:1.6">
-            I am a highly motivated developer with a strong technical foundation in Java and the Spring ecosystem. My passion lies in creating clean, efficient, and well-tested server-side logic that drives high-performance applications. Throughout my learning journey, I have developed expertise in designing relational and NoSQL databases, implementing secure RESTful APIs, and deploying projects using technologies like Docker. I believe a well-designed backend should not only handle heavy loads reliably but also provide a seamless experience for the frontend. When starting a new project, I thoroughly define requirements and analyze data structures to deliver reliable and scalable solutions that align with core business goals.
-          </p>
-
-          <div style="margin-top:12px">
-            <div class="tag-list" role="list">
-              <div class="tag">Location: Hanamkonda, Warangal</div>
-              <div class="tag">Email: <a href="mailto:pavanikunchala143@gmail.com">pavanikunchala143@gmail.com</a></div>
-              <div class="tag">Phone: <a href="tel:+917386325587">+91 73863 25587</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="card">
-            <div style="font-weight:800;margin-bottom:8px">Quick Facts</div>
-            <div class="small">Junior Java Backend Developer • Spring Boot • REST API Design • SQL • Git</div>
-            <div style="margin-top:12px" class="small">
-              <strong>Highlights</strong><br>
-              - Clean, testable code • API design • Database modeling • Deployments
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <p style="color:var(--muted);line-height:1.6;margin:0">
+          I am a highly motivated developer with a strong technical foundation in Java and the Spring ecosystem. My passion lies in creating clean, efficient, and well-tested server-side logic that drives high-performance applications. Throughout my learning journey, I have developed expertise in designing relational and NoSQL databases, implementing secure RESTful APIs, and deploying projects using technologies like Docker. I believe a well-designed backend should not only handle heavy loads reliably but also provide a seamless experience for the frontend. When starting a new project, I thoroughly define requirements and analyze data structures to deliver reliable and scalable solutions that align with core business goals.
+        </p>
       </div>
     </section>
 
@@ -240,7 +234,7 @@
         <div class="service-card">
           <div class="service-icon">🧩</div>
           <div class="service-title">Backend API Development</div>
-          <div class="service-desc">Design and implement secure, documented REST APIs using Java &amp; Spring Boot. Focus on clear contract design, authentication, validation, and performance.</div>
+          <div class="service-desc">Design and implement secure, documented REST APIs using Java &amp; Spring Boot. Focus on contract design, authentication, validation, and performance.</div>
           <a class="service-cta" href="#latest-projects">Learn more</a>
         </div>
 
@@ -254,7 +248,7 @@
         <div class="service-card">
           <div class="service-icon">🔗</div>
           <div class="service-title">Web Integration &amp; Frontend Support</div>
-          <div class="service-desc">Integrate backend APIs with HTML/CSS frontends, create static site endpoints, and ensure seamless data flow between frontend and server.</div>
+          <div class="service-desc">Integrate backend APIs with HTML/CSS frontends, create static endpoints, and ensure seamless data flow between frontend and server.</div>
           <a class="service-cta" href="#contact">Contact</a>
         </div>
       </div>
@@ -264,56 +258,34 @@
     <section id="skills" aria-label="Skills and strengths">
       <div class="section-title">Skills</div>
 
-      <!-- TECHNICAL SKILLS: left = list, right = pie -->
-      <div class="skill-panel" style="margin-bottom:18px">
-        <div style="font-weight:800;margin-bottom:12px">Technical Skills</div>
-        <div class="skills-block">
-          <div class="skill-list-left">
-            <div class="skill-badge skill-strong">Java</div>
-            <div class="skill-badge skill-strong">Spring Boot</div>
-            <div class="skill-badge skill-strong">REST APIs</div>
-            <div class="skill-badge">SQL</div>
-            <div class="skill-badge">HTML</div>
-            <div class="skill-badge">CSS</div>
-            <div class="skill-badge">MS Excel</div>
-            <div class="skill-badge">MS Word</div>
-            <div class="skill-badge">Basic Networking Concepts</div>
-          </div>
-
-          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-            <!-- Pie chart SVG for technical skills -->
-            <svg id="techPie" width="240" height="240" viewBox="0 0 42 42" style="transform:rotate(-90deg);">
-              <!-- background circle -->
-              <circle r="15.91549431" cx="21" cy="21" fill="transparent" stroke="rgba(255,255,255,0.04)" stroke-width="4"></circle>
-              <!-- segments will be inserted by JS -->
-            </svg>
-            <div class="legend" id="techLegend"></div>
-          </div>
+      <div class="card" style="margin-bottom:18px">
+        <div style="font-weight:800;margin-bottom:10px">Technical Skills</div>
+        <div class="skills-grid" role="list">
+          <div class="skill-badge skill-strong">C</div>
+          <div class="skill-badge skill-strong">Java</div>
+          <div class="skill-badge skill-strong">Spring Boot</div>
+          <div class="skill-badge skill-strong">REST APIs</div>
+          <div class="skill-badge">SQL</div>
+          <div class="skill-badge">HTML</div>
+          <div class="skill-badge">CSS</div>
+          <div class="skill-badge">MS Excel</div>
+          <div class="skill-badge">MS Word</div>
+          <div class="skill-badge">Basic Networking Concepts</div>
         </div>
       </div>
 
-      <!-- SOFT SKILLS: left = pie, right = list -->
-      <div class="skill-panel" style="margin-bottom:18px">
-        <div style="font-weight:800;margin-bottom:12px">Soft skills & Key Strengths</div>
-        <div class="skills-block" style="grid-template-columns:420px 1fr;">
-          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-            <svg id="softPie" width="240" height="240" viewBox="0 0 42 42" style="transform:rotate(-90deg);">
-              <circle r="15.91549431" cx="21" cy="21" fill="transparent" stroke="rgba(255,255,255,0.04)" stroke-width="4"></circle>
-            </svg>
-            <div class="legend" id="softLegend"></div>
-          </div>
-
-          <div class="skill-list-right">
-            <div class="card small">Good communication skills (verbal & written)</div>
-            <div class="card small">Strong analytical thinking and problem-solving</div>
-            <div class="card small">Critical thinking and emotional intelligence</div>
-            <div class="card small">Strong attention to details and decision making</div>
-            <div class="card small">Multitasking and effective time management</div>
-            <div class="card small">Teamwork and collaboration</div>
-            <div class="card small">Ability to work independently and responsibly</div>
-            <div class="card small">Self-motivated, flexible, works under pressure</div>
-            <div class="card small">Adaptability and quick learning</div>
-          </div>
+      <div class="card">
+        <div style="font-weight:800;margin-bottom:10px">Soft Skills</div>
+        <div class="skill-list">
+          <div class="pill">Good communication skills (verbal & written)</div>
+          <div class="pill">Strong analytical thinking and problem-solving</div>
+          <div class="pill">Critical thinking and emotional intelligence</div>
+          <div class="pill">Strong attention to detail and decision making</div>
+          <div class="pill">Multitasking and effective time management</div>
+          <div class="pill">Teamwork and collaboration</div>
+          <div class="pill">Ability to work independently and responsibly</div>
+          <div class="pill">Self-motivated, flexible, works under pressure</div>
+          <div class="pill">Adaptability and quick learning</div>
         </div>
       </div>
     </section>
@@ -372,241 +344,4 @@
           <div id="case-ticket" class="case hidden" aria-hidden="true">
             <h5>STAR Case Study</h5>
             <p><strong>Situation:</strong> Support teams manually reviewed tickets and missed trending issues and repetitive queries that hurt SLA and agent productivity.</p>
-            <p><strong>Task:</strong> Build a pipeline that ingests ticket text, computes trends & sentiment, and exposes aggregated metrics to a dashboard API.</p>
-            <p><strong>Action:</strong> Built a simple ETL pipeline: fetch tickets via API, preprocess text (clean + tokenization), run lightweight sentiment scoring and clustering for repetitive queries. Stored aggregated metrics in a reporting store and exposed REST APIs for dashboard charts.</p>
-            <p><strong>Result:</strong> Team detected top-3 recurring issues automatically; average time-to-resolution dropped by 18% in testing.</p>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card" id="proj-student">
-          <h4>Student Management System (SQL)</h4>
-          <div class="project-meta">Problem solved: Centralized records & reporting for student enrollments and grades</div>
-          <div class="project-buttons mb-8">
-            <button class="btn-case" data-toggle="case" data-target="case-stu">Case study</button>
-            <a class="btn-small" href="https://github.com/pavanikunchala21/student-management-sql" target="_blank" rel="noopener">Repo</a>
-          </div>
-
-          <div id="case-stu" class="case hidden" aria-hidden="true">
-            <h5>STAR Case Study</h5>
-            <p><strong>Situation:</strong> Small educational institution needed reliable CRUD, reporting and enrollment flows with audit trails.</p>
-            <p><strong>Task:</strong> Create a database-first application with clean REST APIs and reporting endpoints for administrative staff.</p>
-            <p><strong>Action:</strong> Designed normalized SQL schema (students, courses, enrollments, grades), implemented stored procedures for common reports, built Spring Boot REST endpoints, and added export endpoints (CSV/PDF) for administrative reports.</p>
-            <p><strong>Result:</strong> Admins could generate monthly enrollment & performance reports in seconds. The system reduced manual spreadsheet work by ~70% in trial runs.</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" aria-label="Education">
-      <div class="section-title">Education</div>
-      <div class="card">
-        <div class="list">
-          <div class="pill"><strong>Bachelor of Science (MPCs)</strong> — Vaagdevi Degree &amp; P.G. College, Hanamkonda (Kakatiya University). 2025 — 6.64 CGPA (≈ 65%)</div>
-          <div class="pill"><strong>Intermediate (MPC)</strong> — Pingali Junior College for Girls, Waddepally. 2022 — 65%</div>
-          <div class="pill"><strong>SSC</strong> — Government High School, Waddepally. 2020 — 95%</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXTRA CURRICULAR -->
-    <section id="extracurricular" aria-label="Extracurricular">
-      <div class="section-title">Extra Curricular Activities</div>
-      <div class="card">
-        <div class="list">
-          <div class="pill">Actively participated in college cultural events showcasing creativity and teamwork.</div>
-          <div class="pill">Interested in sports and fitness activities — maintain discipline, team spirit and time management.</div>
-          <div class="pill">Voluntary participation in social services and awareness programs — building leadership and community engagement skills.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- POSITIONS -->
-    <section id="positions" aria-label="Positions of responsibility">
-      <div class="section-title">Positions of Responsibility</div>
-      <div class="card">
-        <div class="list">
-          <div class="pill"><strong>Class Representative:</strong> Acted as mediator between faculty and students, coordinating academic updates and resolving queries.</div>
-          <div class="pill"><strong>Event Coordinator:</strong> Organized cultural and technical events in school and college, managing participation and queries.</div>
-          <div class="pill"><strong>Club Participant & Organizer:</strong> Took active roles in cultural events and helped conduct competitions.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOBBIES -->
-    <section id="hobbies" aria-label="Hobbies and interests">
-      <div class="section-title">Hobbies &amp; Personal Interests</div>
-      <div class="card">
-        <div class="list">
-          <div class="pill">Reading books and novels 📚📖</div>
-          <div class="pill">Playing volleyball 🏐</div>
-          <div class="pill">Gardening 🌲🌴</div>
-          <div class="pill">Listening to music 🎵🎶</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-label="Contact">
-      <div class="section-title">Contact</div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div style="font-weight:800;margin-bottom:8px">Get in touch</div>
-          <p class="small">I'm open to opportunities and collaborations. Email is fastest — I check messages frequently.</p>
-          <p style="margin-top:12px"><strong>Email:</strong> <a href="mailto:pavanikunchala143@gmail.com">pavanikunchala143@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+917386325587">+91 73863 25587</a></p>
-
-          <div style="margin-top:12px">
-            <a class="btn-small" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">View GitHub</a>
-            <a class="btn-small" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn-small" href="#" onclick="alert('Please upload resume.pdf to your repo and update this link');return false">Download Resume</a>
-          </div>
-        </div>
-
-        <div class="contact-card">
-          <div style="font-weight:800;margin-bottom:8px">Quick contact form</div>
-          <form id="contactForm" onsubmit="handleContact(event)">
-            <div style="display:flex;gap:8px;margin-bottom:8px">
-              <input id="name" placeholder="Your name" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)">
-              <input id="email" placeholder="Your email" type="email" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)">
-            </div>
-            <textarea id="message" placeholder="Message" rows="4" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)"></textarea>
-            <div style="margin-top:10px">
-              <button class="cta" type="submit">Send Message</button>
-            </div>
-          </form>
-          <div id="contactNote" class="small" style="margin-top:8px;color:var(--muted)">Note: This form shows a confirmation locally. For real submissions, wire it to a backend or form service (e.g., Formspree).</div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="small">© <strong>Pavani Kunchala</strong> — Java Backend Developer • Built with ❤️</div>
-    </footer>
-  </main>
-
-  <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href.length > 1){
-          e.preventDefault();
-          const el = document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
-    });
-
-    // Toggle case-study boxes
-    document.querySelectorAll('[data-toggle="case"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const target = btn.getAttribute('data-target');
-        const el = document.getElementById(target);
-        if(!el) return;
-        const isHidden = el.classList.contains('hidden');
-        document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
-        if(isHidden){
-          el.classList.remove('hidden');
-          el.setAttribute('aria-hidden','false');
-          el.scrollIntoView({behavior:'smooth', block:'center'});
-        } else {
-          el.classList.add('hidden');
-          el.setAttribute('aria-hidden','true');
-        }
-      });
-    });
-
-    // Contact form simple handler (local only)
-    function handleContact(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if(!name||!email||!message){ alert('Please fill all fields.'); return; }
-      alert('Thanks ' + name + '! Message captured locally.\nEmail: ' + email + '\n(Connect the form to your backend to receive messages.)');
-      document.getElementById('contactForm').reset();
-    }
-
-    // Accessibility: close case studies with Escape
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape'){
-        document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
-      }
-    });
-
-    /* ---------- PIE CHART HELPERS ---------- */
-    // We draw pie segments by using stroke-dasharray on circle (SVG)
-    // circle circumference = 2 * PI * r ; for r 15.91549431 circumference = 100
-    // so percentages map directly to stroke-dasharray values
-
-    function drawPie(svgId, legendId, data) {
-      // data = [{label, value, color}, ...] values sum to 100
-      const svg = document.getElementById(svgId);
-      const legend = document.getElementById(legendId);
-      if(!svg || !legend) return;
-      // remove any previous segments
-      while (svg.children.length > 1) svg.removeChild(svg.lastChild);
-      legend.innerHTML = '';
-      let offset = 0;
-      data.forEach(item=>{
-        const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
-        circle.setAttribute('r','15.91549431'); // radius
-        circle.setAttribute('cx','21');
-        circle.setAttribute('cy','21');
-        circle.setAttribute('fill','transparent');
-        circle.setAttribute('stroke', item.color);
-        circle.setAttribute('stroke-width','4');
-        circle.setAttribute('stroke-dasharray', item.value + ' 100');
-        circle.setAttribute('stroke-dashoffset', 100 - offset);
-        circle.style.transition = 'stroke-dasharray 900ms ease, stroke-dashoffset 900ms ease';
-        svg.appendChild(circle);
-
-        // legend item
-        const li = document.createElement('div');
-        li.className = 'legend-item';
-        const dot = document.createElement('span');
-        dot.className = 'legend-dot';
-        dot.style.background = item.color;
-        li.appendChild(dot);
-        const t = document.createElement('span');
-        t.textContent = `${item.label} — ${item.value}%`;
-        li.appendChild(t);
-        legend.appendChild(li);
-
-        offset += item.value;
-      });
-    }
-
-    // Technical skills percentages (must add to 100)
-    const techData = [
-      { label: 'Java', value: 26, color: '#ffb86b' },
-      { label: 'Spring Boot', value: 22, color: '#00e6d9' },
-      { label: 'REST APIs', value: 20, color: '#a66aff' },
-      { label: 'SQL', value: 12, color: '#6bdcff' },
-      { label: 'HTML/CSS', value: 8, color: '#ffd36b' },
-      { label: 'MS Excel/Word', value: 7, color: '#d19bff' },
-      { label: 'Networking', value: 5, color: '#8ef0c7' }
-    ];
-
-    // Soft skills percentages (sum to 100)
-    const softData = [
-      { label: 'Communication', value: 15, color: '#00e6d9' },
-      { label: 'Analytical Thinking', value: 16, color: '#a66aff' },
-      { label: 'Attention to Detail', value: 15, color: '#ffb86b' },
-      { label: 'Teamwork', value: 14, color: '#6bdcff' },
-      { label: 'Problem Solving', value: 13, color: '#ffd36b' },
-      { label: 'Adaptability', value: 12, color: '#d19bff' },
-      { label: 'Self-motivated', value: 15, color: '#8ef0c7' }
-    ];
-
-    // On DOM ready draw both pies
-    document.addEventListener('DOMContentLoaded', function(){
-      drawPie('techPie','techLegend', techData);
-      drawPie('softPie','softLegend', softData);
-    });
-  </script>
-</body>
-</html>
+            <p><strong>Task:</strong> Build a pipeline that ingests ticket text, computes trends & sentiment, and exp
