@@ -20,6 +20,7 @@
       --max-width: 1180px;
       --btn-white-bg: #ffffff;
       --btn-white-foreground: #0b0b0b;
+      --card-radius:14px;
     }
 
     *{box-sizing:border-box}
@@ -28,11 +29,11 @@
     .container{max-width:var(--max-width);margin:0 auto;padding:28px}
 
     /* NAV */
-    header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(2,8,14,0.7), rgba(2,8,14,0.4));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
+    header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(2,8,14,0.8), rgba(2,8,14,0.45));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
     .brand{font-weight:800;font-size:18px;letter-spacing:0.6px}
     nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
-    nav a{font-weight:600;color:rgba(255,255,255,0.87)}
+    nav a{font-weight:600;color:rgba(255,255,255,0.92)}
     .nav-cta{padding:8px 12px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:8px;color:#021015;font-weight:700}
 
     /* HERO */
@@ -42,89 +43,64 @@
     .intro .role{font-size:20px;color:var(--accent-1);font-weight:700;margin:6px 0 18px}
     .intro p.lead{color:var(--muted);max-width:640px;margin-bottom:22px;font-size:15px}
     .socials{display:flex;gap:12px;margin-bottom:18px}
-    .sbtn{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-weight:700;background:transparent;color:var(--text)}
+    .sbtn{min-width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-weight:700;background:transparent;color:var(--text);padding:0 10px}
 
     .cta-row{display:flex;gap:12px;align-items:center}
     .cta{padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#021015;font-weight:700}
 
-    /* neon avatar (image has no filters applied) */
+    /* avatar */
     .avatar-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .neon-ring{
       width:360px;height:360px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-      /* outer glow kept but will not overlay the inner image */
-      background:radial-gradient(circle at 30% 30%, rgba(166,106,255,0.07), transparent 8%),
-                 radial-gradient(circle at 70% 70%, rgba(0,230,217,0.04), transparent 18%);
-      box-shadow:0 40px 90px rgba(2,10,18,0.7);
+      background:radial-gradient(circle at 30% 30%, rgba(166,106,255,0.06), transparent 10%),
+                 radial-gradient(circle at 70% 70%, rgba(0,230,217,0.03), transparent 22%);
       position:relative;
     }
     .neon-ring::before{
       content:"";position:absolute;inset:-8px;border-radius:50%;
-      background:conic-gradient(from 180deg, rgba(0,230,217,0.55), rgba(166,106,255,0.6), rgba(0,230,217,0.45));
-      filter:blur(18px);opacity:0.9;
-      pointer-events:none;
+      background:conic-gradient(from 180deg, rgba(0,230,217,0.55), rgba(166,106,255,0.45), rgba(0,230,217,0.35));
+      filter:blur(18px);opacity:0.85;pointer-events:none;
     }
-
-    /* CLEAN INNER - white border and black background behind image to avoid color bleed */
     .neon-inner{
-      width:320px;
-      height:320px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      background:#000000; /* clean background to avoid neon bleed */
-      border:4px solid #ffffff; /* clean white circular border */
-      z-index:2;
+      width:320px;height:320px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      background:#000000;border:4px solid #ffffff;z-index:2;
     }
-
-    .avatar-inner img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      display:block;
-      filter:none !important; /* no filters */
-      mix-blend-mode:normal !important; /* prevent blending */
-      image-rendering:auto;
-    }
+    .avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;filter:none !important;mix-blend-mode:normal !important}
 
     /* sections */
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
-    .section-title{font-size:20px;font-weight:800;margin-bottom:14px;color:var(--text)}
-    .muted{color:var(--muted)}
+    .section-title{font-size:22px;font-weight:800;margin-bottom:18px;color:var(--text)}
+    .muted{color:var(--muted);}
 
     /* SERVICES */
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-    .service-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:22px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);position:relative;overflow:visible;box-shadow:0 24px 40px rgba(0,0,0,0.5)}
+    .service-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:22px;border-radius:var(--card-radius);border:1px solid rgba(255,255,255,0.03);position:relative;overflow:visible}
     .service-card::after{
-      content:"";position:absolute;inset:-8px;border-radius:16px;z-index:-1;
-      background:radial-gradient(circle at 10% 20%, rgba(0,230,217,0.08), transparent 7%),
-                 radial-gradient(circle at 90% 80%, rgba(166,106,255,0.06), transparent 15%);
+      content:"";position:absolute;inset:-8px;border-radius:var(--card-radius);z-index:-1;
+      background:radial-gradient(circle at 10% 20%, rgba(0,230,217,0.06), transparent 7%),
+                 radial-gradient(circle at 90% 80%, rgba(166,106,255,0.05), transparent 15%);
       filter:blur(18px);opacity:0.95;
     }
     .service-icon{font-size:22px;margin-bottom:12px;color:var(--accent-1);font-weight:800}
     .service-title{font-weight:800;margin-bottom:10px;font-size:18px}
     .service-desc{color:var(--muted);font-size:14px;line-height:1.5}
-    .service-cta{display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px;background:var(--btn-white-bg);color:var(--btn-white-foreground);font-weight:800;border:1px solid rgba(0,0,0,0.06)}
+    .service-cta{display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px;background:var(--btn-white-bg);color:var(--btn-white-foreground);font-weight:800}
 
-    /* skills */
-    .skills-grid{display:flex;gap:18px;flex-wrap:wrap}
-    .skill-badge{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
+    /* SKILLS layout */
+    .skills-block{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
+    .skill-list-left, .skill-list-right{display:flex;flex-direction:column;gap:10px}
+    .skill-badge{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text);display:inline-block}
     .skill-strong{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));box-shadow:0 8px 30px rgba(166,106,255,0.06);color:#021015}
 
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .skill-list{display:flex;flex-direction:column;gap:8px}
+    .skill-panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
 
-    /* projects */
+    /* projects grid */
     .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
     .project-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
     .project-card h4{margin:0 0 8px}
     .project-meta{color:var(--muted);font-size:14px;margin-bottom:12px}
     .project-buttons{display:flex;gap:10px;flex-wrap:wrap}
 
-    /* Case Study button: white box with black text */
     .btn-case{
       background: var(--btn-white-bg);
       color: var(--btn-white-foreground);
@@ -135,16 +111,11 @@
       cursor:pointer;
       box-shadow: 0 6px 18px rgba(11,11,11,0.08);
     }
-
     .btn-small{padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:700;color:var(--text)}
 
-    /* case-study area */
-    .case{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));border-left:4px solid rgba(0,230,217,0.12)}
-    .case h5{margin:6px 0 6px;font-size:15px}
-    .case p{color:var(--muted);margin:6px 0 10px;font-size:14px}
-
-    .tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:700;font-size:13px}
+    /* Extracurricular & positions */
+    .list{display:flex;flex-direction:column;gap:8px}
+    .pill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
 
     /* contact & footer */
     .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:24px}
@@ -156,6 +127,7 @@
     /* responsive */
     @media (max-width:1100px){
       .services-grid{grid-template-columns:1fr}
+      .skills-block{grid-template-columns:1fr}
     }
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;gap:24px;padding:36px 0}
@@ -169,6 +141,10 @@
 
     .hidden{display:none}
     .center{display:flex;align-items:center;justify-content:center}
+    /* small svg legend style */
+    .legend { display:flex;flex-direction:column;gap:6px;margin-top:8px }
+    .legend-item { display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted) }
+    .legend-dot{width:14px;height:14px;border-radius:3px;display:inline-block}
   </style>
 </head>
 <body>
@@ -183,7 +159,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#latest-projects">Latest Projects</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a class="nav-cta" href="https://github.com/pavanikunchala21" target="_blank" rel="noopener">GitHub</a></li>
           <li><a class="nav-cta" href="https://www.linkedin.com/in/pavani-kunchala-725b30280" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -211,7 +187,7 @@
         </div>
 
         <div class="cta-row">
-          <a class="cta" href="#projects">See Projects</a>
+          <a class="cta" href="#latest-projects">See Projects</a>
           <a class="btn-small" href="#contact">Contact Me</a>
         </div>
       </div>
@@ -219,7 +195,7 @@
       <div class="avatar-wrap" aria-hidden="false">
         <div class="neon-ring" role="img" aria-label="Profile picture">
           <div class="neon-inner avatar-inner">
-            <!-- uses image.jpeg that you uploaded to repo root; image displayed clean with no color filter -->
+            <!-- use the image you uploaded to repo root -->
             <img src="image.jpeg" alt="Pavani Kunchala">
           </div>
         </div>
@@ -261,23 +237,20 @@
     <section id="services" aria-label="Services">
       <div class="section-title">My Services</div>
       <div class="services-grid">
-        <!-- Card 1 -->
         <div class="service-card">
           <div class="service-icon">🧩</div>
           <div class="service-title">Backend API Development</div>
           <div class="service-desc">Design and implement secure, documented REST APIs using Java &amp; Spring Boot. Focus on clear contract design, authentication, validation, and performance.</div>
-          <a class="service-cta" href="#projects">Learn more</a>
+          <a class="service-cta" href="#latest-projects">Learn more</a>
         </div>
 
-        <!-- Card 2 -->
         <div class="service-card">
           <div class="service-icon">🗄️</div>
           <div class="service-title">Database Design &amp; Optimization</div>
           <div class="service-desc">Schema design, normalized relational models, indexing and query optimization for SQL databases to ensure fast and reliable data access.</div>
-          <a class="service-cta" href="#projects">Learn more</a>
+          <a class="service-cta" href="#latest-projects">Learn more</a>
         </div>
 
-        <!-- Card 3 -->
         <div class="service-card">
           <div class="service-icon">🔗</div>
           <div class="service-title">Web Integration &amp; Frontend Support</div>
@@ -290,13 +263,12 @@
     <!-- SKILLS -->
     <section id="skills" aria-label="Skills and strengths">
       <div class="section-title">Skills</div>
-      <div class="two-col">
 
-        <div>
-          <div style="margin-bottom:12px;font-weight:800">Technical Skills</div>
-          <div class="skills-grid" role="list">
-            <!-- updated technical skills per your request -->
-            <div class="skill-badge skill-strong">C</div>
+      <!-- TECHNICAL SKILLS: left = list, right = pie -->
+      <div class="skill-panel" style="margin-bottom:18px">
+        <div style="font-weight:800;margin-bottom:12px">Technical Skills</div>
+        <div class="skills-block">
+          <div class="skill-list-left">
             <div class="skill-badge skill-strong">Java</div>
             <div class="skill-badge skill-strong">Spring Boot</div>
             <div class="skill-badge skill-strong">REST APIs</div>
@@ -307,11 +279,31 @@
             <div class="skill-badge">MS Word</div>
             <div class="skill-badge">Basic Networking Concepts</div>
           </div>
-        </div>
 
-        <div>
-          <div style="margin-bottom:12px;font-weight:800">Soft skills & Key Strengths</div>
-          <div class="skill-list small">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <!-- Pie chart SVG for technical skills -->
+            <svg id="techPie" width="240" height="240" viewBox="0 0 42 42" style="transform:rotate(-90deg);">
+              <!-- background circle -->
+              <circle r="15.91549431" cx="21" cy="21" fill="transparent" stroke="rgba(255,255,255,0.04)" stroke-width="4"></circle>
+              <!-- segments will be inserted by JS -->
+            </svg>
+            <div class="legend" id="techLegend"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOFT SKILLS: left = pie, right = list -->
+      <div class="skill-panel" style="margin-bottom:18px">
+        <div style="font-weight:800;margin-bottom:12px">Soft skills & Key Strengths</div>
+        <div class="skills-block" style="grid-template-columns:420px 1fr;">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <svg id="softPie" width="240" height="240" viewBox="0 0 42 42" style="transform:rotate(-90deg);">
+              <circle r="15.91549431" cx="21" cy="21" fill="transparent" stroke="rgba(255,255,255,0.04)" stroke-width="4"></circle>
+            </svg>
+            <div class="legend" id="softLegend"></div>
+          </div>
+
+          <div class="skill-list-right">
             <div class="card small">Good communication skills (verbal & written)</div>
             <div class="card small">Strong analytical thinking and problem-solving</div>
             <div class="card small">Critical thinking and emotional intelligence</div>
@@ -326,9 +318,9 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" aria-label="Selected projects">
-      <div class="section-title">Selected Projects — Detailed case studies (STAR)</div>
+    <!-- LATEST PROJECTS -->
+    <section id="latest-projects" aria-label="Latest projects">
+      <div class="section-title">Latest Projects — Detailed case studies (STAR)</div>
 
       <div class="projects-grid">
 
@@ -345,17 +337,8 @@
             <h5>STAR Case Study</h5>
             <p><strong>Situation:</strong> A local retailer wanted to scale online sales with a modular backend that could handle concurrent orders and inventory updates without conflicts.</p>
             <p><strong>Task:</strong> Design and implement a microservice-based backend: Product, Cart, Order, and Auth services with reliable data consistency and REST API contracts for front-end consumption.</p>
-            <p><strong>Action:</strong> I designed DB schemas (MySQL) and used Spring Boot services for each bounded context. Implemented optimistic locking for inventory updates, event-driven order processing (using simple message queue pattern / local queue), transactional boundaries via Spring transactions, and JWT-based authentication. Wrote integration tests and created OpenAPI docs for the APIs.</p>
-            <p><strong>Result:</strong> The system supported 500 concurrent checkouts in load tests with zero inventory inconsistencies. Response times during peak load remained within SLA (p95 &lt; 320ms). The client could onboard new storefront frontends easily using the provided REST contracts.</p>
-
-            <div style="margin-top:10px">
-              <strong>Key highlights / Docs</strong>
-              <ul class="small">
-                <li>Design artifacts: ER diagram, service boundaries, API contract (OpenAPI)</li>
-                <li>Tech: C, Java, Spring Boot, REST APIs, SQL</li>
-                <li>Production-ready features: Optimistic locking, pagination, filtering, health checks</li>
-              </ul>
-            </div>
+            <p><strong>Action:</strong> I designed DB schemas (MySQL) and used Spring Boot services for each bounded context. Implemented optimistic locking for inventory updates, event-driven order processing, transactional boundaries via Spring transactions, and JWT-based authentication. Wrote integration tests and created OpenAPI docs for the APIs.</p>
+            <p><strong>Result:</strong> The system supported 500 concurrent checkouts in load tests with zero inventory inconsistencies. Response times during peak load remained within SLA (p95 &lt; 320ms).</p>
           </div>
         </article>
 
@@ -373,15 +356,7 @@
             <p><strong>Situation:</strong> A product manager needed a live view of system metrics (requests/sec, errors, latency) to make operational decisions.</p>
             <p><strong>Task:</strong> Build backend endpoints and a streaming interface that feeds the frontend charts in near real-time with minimal latency.</p>
             <p><strong>Action:</strong> Implemented a Spring Boot service exposing WebSocket endpoints and REST fallback. Backend collected metrics from simulated event producers and streamed aggregated values over WebSockets; added batching and compression to reduce bandwidth. Authenticated WebSocket sessions and provided reconnect logic on the client side. Added an API to query historical windows for charts.</p>
-            <p><strong>Result:</strong> Frontend charts displayed updates in &lt;200ms after metric ingestion on average. The streaming approach reduced REST polling overhead by 92% and allowed quicker troubleshooting.</p>
-
-            <div style="margin-top:10px">
-              <strong>Key highlights / Docs</strong>
-              <ul class="small">
-                <li>Tech: Java, Spring Boot, WebSocket, REST, SQL</li>
-                <li>Features: Aggregation pipeline, authentication, reconnect logic, historical queries</li>
-              </ul>
-            </div>
+            <p><strong>Result:</strong> Frontend charts displayed updates in &lt;200ms after metric ingestion on average. The streaming approach reduced REST polling overhead by 92%.</p>
           </div>
         </article>
 
@@ -398,16 +373,8 @@
             <h5>STAR Case Study</h5>
             <p><strong>Situation:</strong> Support teams manually reviewed tickets and missed trending issues and repetitive queries that hurt SLA and agent productivity.</p>
             <p><strong>Task:</strong> Build a pipeline that ingests ticket text, computes trends & sentiment, and exposes aggregated metrics to a dashboard API.</p>
-            <p><strong>Action:</strong> Built a simple ETL pipeline: fetch tickets via API, preprocess text (clean + tokenization), run lightweight sentiment scoring (lexicon-based) and simple clustering for repetitive queries. Stored aggregated metrics in a reporting store and exposed REST APIs for dashboard charts. Added scheduled jobs to compute daily summaries and anomaly alerts.</p>
-            <p><strong>Result:</strong> Team detected top-3 recurring issues automatically; average time-to-resolution dropped by 18% in testing. The dashboard provided daily trending graphs and simple sentiment scoring useful for prioritization.</p>
-
-            <div style="margin-top:10px">
-              <strong>Key highlights / Docs</strong>
-              <ul class="small">
-                <li>Tech: Java, Spring Boot, REST APIs, SQL</li>
-                <li>Features: ETL pipeline, scheduled summarization, alerting, REST APIs for visualization</li>
-              </ul>
-            </div>
+            <p><strong>Action:</strong> Built a simple ETL pipeline: fetch tickets via API, preprocess text (clean + tokenization), run lightweight sentiment scoring and clustering for repetitive queries. Stored aggregated metrics in a reporting store and exposed REST APIs for dashboard charts.</p>
+            <p><strong>Result:</strong> Team detected top-3 recurring issues automatically; average time-to-resolution dropped by 18% in testing.</p>
           </div>
         </article>
 
@@ -424,19 +391,60 @@
             <h5>STAR Case Study</h5>
             <p><strong>Situation:</strong> Small educational institution needed reliable CRUD, reporting and enrollment flows with audit trails.</p>
             <p><strong>Task:</strong> Create a database-first application with clean REST APIs and reporting endpoints for administrative staff.</p>
-            <p><strong>Action:</strong> Designed normalized SQL schema (students, courses, enrollments, grades), implemented stored procedures for common reports, built Spring Boot REST endpoints, and added export endpoints (CSV/PDF) for administrative reports. Implemented basic RBAC for admin vs faculty roles. Wrote sample SQL reports and test data scripts.</p>
+            <p><strong>Action:</strong> Designed normalized SQL schema (students, courses, enrollments, grades), implemented stored procedures for common reports, built Spring Boot REST endpoints, and added export endpoints (CSV/PDF) for administrative reports.</p>
             <p><strong>Result:</strong> Admins could generate monthly enrollment & performance reports in seconds. The system reduced manual spreadsheet work by ~70% in trial runs.</p>
-
-            <div style="margin-top:10px">
-              <strong>Key highlights / Docs</strong>
-              <ul class="small">
-                <li>Tech: SQL schemas, stored procedures, Spring Boot APIs</li>
-                <li>Features: Audit logs, reporting, enrollment workflows, sample deploy scripts</li>
-              </ul>
-            </div>
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" aria-label="Education">
+      <div class="section-title">Education</div>
+      <div class="card">
+        <div class="list">
+          <div class="pill"><strong>Bachelor of Science (MPCs)</strong> — Vaagdevi Degree &amp; P.G. College, Hanamkonda (Kakatiya University). 2025 — 6.64 CGPA (≈ 65%)</div>
+          <div class="pill"><strong>Intermediate (MPC)</strong> — Pingali Junior College for Girls, Waddepally. 2022 — 65%</div>
+          <div class="pill"><strong>SSC</strong> — Government High School, Waddepally. 2020 — 95%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRA CURRICULAR -->
+    <section id="extracurricular" aria-label="Extracurricular">
+      <div class="section-title">Extra Curricular Activities</div>
+      <div class="card">
+        <div class="list">
+          <div class="pill">Actively participated in college cultural events showcasing creativity and teamwork.</div>
+          <div class="pill">Interested in sports and fitness activities — maintain discipline, team spirit and time management.</div>
+          <div class="pill">Voluntary participation in social services and awareness programs — building leadership and community engagement skills.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POSITIONS -->
+    <section id="positions" aria-label="Positions of responsibility">
+      <div class="section-title">Positions of Responsibility</div>
+      <div class="card">
+        <div class="list">
+          <div class="pill"><strong>Class Representative:</strong> Acted as mediator between faculty and students, coordinating academic updates and resolving queries.</div>
+          <div class="pill"><strong>Event Coordinator:</strong> Organized cultural and technical events in school and college, managing participation and queries.</div>
+          <div class="pill"><strong>Club Participant & Organizer:</strong> Took active roles in cultural events and helped conduct competitions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies" aria-label="Hobbies and interests">
+      <div class="section-title">Hobbies &amp; Personal Interests</div>
+      <div class="card">
+        <div class="list">
+          <div class="pill">Reading books and novels 📚📖</div>
+          <div class="pill">Playing volleyball 🏐</div>
+          <div class="pill">Gardening 🌲🌴</div>
+          <div class="pill">Listening to music 🎵🎶</div>
+        </div>
       </div>
     </section>
 
@@ -527,6 +535,77 @@
       if(e.key === 'Escape'){
         document.querySelectorAll('.case').forEach(c=>{ c.classList.add('hidden'); c.setAttribute('aria-hidden','true'); });
       }
+    });
+
+    /* ---------- PIE CHART HELPERS ---------- */
+    // We draw pie segments by using stroke-dasharray on circle (SVG)
+    // circle circumference = 2 * PI * r ; for r 15.91549431 circumference = 100
+    // so percentages map directly to stroke-dasharray values
+
+    function drawPie(svgId, legendId, data) {
+      // data = [{label, value, color}, ...] values sum to 100
+      const svg = document.getElementById(svgId);
+      const legend = document.getElementById(legendId);
+      if(!svg || !legend) return;
+      // remove any previous segments
+      while (svg.children.length > 1) svg.removeChild(svg.lastChild);
+      legend.innerHTML = '';
+      let offset = 0;
+      data.forEach(item=>{
+        const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        circle.setAttribute('r','15.91549431'); // radius
+        circle.setAttribute('cx','21');
+        circle.setAttribute('cy','21');
+        circle.setAttribute('fill','transparent');
+        circle.setAttribute('stroke', item.color);
+        circle.setAttribute('stroke-width','4');
+        circle.setAttribute('stroke-dasharray', item.value + ' 100');
+        circle.setAttribute('stroke-dashoffset', 100 - offset);
+        circle.style.transition = 'stroke-dasharray 900ms ease, stroke-dashoffset 900ms ease';
+        svg.appendChild(circle);
+
+        // legend item
+        const li = document.createElement('div');
+        li.className = 'legend-item';
+        const dot = document.createElement('span');
+        dot.className = 'legend-dot';
+        dot.style.background = item.color;
+        li.appendChild(dot);
+        const t = document.createElement('span');
+        t.textContent = `${item.label} — ${item.value}%`;
+        li.appendChild(t);
+        legend.appendChild(li);
+
+        offset += item.value;
+      });
+    }
+
+    // Technical skills percentages (must add to 100)
+    const techData = [
+      { label: 'Java', value: 26, color: '#ffb86b' },
+      { label: 'Spring Boot', value: 22, color: '#00e6d9' },
+      { label: 'REST APIs', value: 20, color: '#a66aff' },
+      { label: 'SQL', value: 12, color: '#6bdcff' },
+      { label: 'HTML/CSS', value: 8, color: '#ffd36b' },
+      { label: 'MS Excel/Word', value: 7, color: '#d19bff' },
+      { label: 'Networking', value: 5, color: '#8ef0c7' }
+    ];
+
+    // Soft skills percentages (sum to 100)
+    const softData = [
+      { label: 'Communication', value: 15, color: '#00e6d9' },
+      { label: 'Analytical Thinking', value: 16, color: '#a66aff' },
+      { label: 'Attention to Detail', value: 15, color: '#ffb86b' },
+      { label: 'Teamwork', value: 14, color: '#6bdcff' },
+      { label: 'Problem Solving', value: 13, color: '#ffd36b' },
+      { label: 'Adaptability', value: 12, color: '#d19bff' },
+      { label: 'Self-motivated', value: 15, color: '#8ef0c7' }
+    ];
+
+    // On DOM ready draw both pies
+    document.addEventListener('DOMContentLoaded', function(){
+      drawPie('techPie','techLegend', techData);
+      drawPie('softPie','softLegend', softData);
     });
   </script>
 </body>
