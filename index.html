@@ -51,7 +51,7 @@
     .avatar-wrap{display:flex;align-items:center;justify-content:center;position:relative}
     .neon-ring{
       width:360px;height:360px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-      /* keep outer neon ring visual but it will NOT overlay the inner image */
+      /* outer glow kept but will not overlay the inner image */
       background:radial-gradient(circle at 30% 30%, rgba(166,106,255,0.07), transparent 8%),
                  radial-gradient(circle at 70% 70%, rgba(0,230,217,0.04), transparent 18%);
       box-shadow:0 40px 90px rgba(2,10,18,0.7);
@@ -93,6 +93,20 @@
     section{padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
     .section-title{font-size:20px;font-weight:800;margin-bottom:14px;color:var(--text)}
     .muted{color:var(--muted)}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+    .service-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:22px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);position:relative;overflow:visible;box-shadow:0 24px 40px rgba(0,0,0,0.5)}
+    .service-card::after{
+      content:"";position:absolute;inset:-8px;border-radius:16px;z-index:-1;
+      background:radial-gradient(circle at 10% 20%, rgba(0,230,217,0.08), transparent 7%),
+                 radial-gradient(circle at 90% 80%, rgba(166,106,255,0.06), transparent 15%);
+      filter:blur(18px);opacity:0.95;
+    }
+    .service-icon{font-size:22px;margin-bottom:12px;color:var(--accent-1);font-weight:800}
+    .service-title{font-weight:800;margin-bottom:10px;font-size:18px}
+    .service-desc{color:var(--muted);font-size:14px;line-height:1.5}
+    .service-cta{display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px;background:var(--btn-white-bg);color:var(--btn-white-foreground);font-weight:800;border:1px solid rgba(0,0,0,0.06)}
 
     /* skills */
     .skills-grid{display:flex;gap:18px;flex-wrap:wrap}
@@ -140,6 +154,9 @@
     footer{padding:28px 0;color:var(--muted);font-size:14px;text-align:center}
 
     /* responsive */
+    @media (max-width:1100px){
+      .services-grid{grid-template-columns:1fr}
+    }
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;gap:24px;padding:36px 0}
       .two-col{grid-template-columns:1fr}
@@ -164,6 +181,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -235,6 +253,36 @@
               - Clean, testable code • API design • Database modeling • Deployments
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-label="Services">
+      <div class="section-title">My Services</div>
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="service-card">
+          <div class="service-icon">🧩</div>
+          <div class="service-title">Backend API Development</div>
+          <div class="service-desc">Design and implement secure, documented REST APIs using Java &amp; Spring Boot. Focus on clear contract design, authentication, validation, and performance.</div>
+          <a class="service-cta" href="#projects">Learn more</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card">
+          <div class="service-icon">🗄️</div>
+          <div class="service-title">Database Design &amp; Optimization</div>
+          <div class="service-desc">Schema design, normalized relational models, indexing and query optimization for SQL databases to ensure fast and reliable data access.</div>
+          <a class="service-cta" href="#projects">Learn more</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card">
+          <div class="service-icon">🔗</div>
+          <div class="service-title">Web Integration &amp; Frontend Support</div>
+          <div class="service-desc">Integrate backend APIs with HTML/CSS frontends, create static site endpoints, and ensure seamless data flow between frontend and server.</div>
+          <a class="service-cta" href="#contact">Contact</a>
         </div>
       </div>
     </section>
